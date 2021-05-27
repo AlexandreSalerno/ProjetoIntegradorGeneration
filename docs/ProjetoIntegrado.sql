@@ -3,7 +3,7 @@ CREATE TABLE `tb_postagens` (
 	`data` DATETIME NOT NULL,
 	`titulo` VARCHAR(255) NOT NULL,
 	`conteudo` varchar(1000) NOT NULL,
-	`tag` varchar(1000),
+	`links` varchar(250),
 	`usuario_id` INT NOT NULL,
 	`tema_id` INT NOT NULL,
 	PRIMARY KEY (`id`)
