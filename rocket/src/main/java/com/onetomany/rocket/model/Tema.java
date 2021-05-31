@@ -23,7 +23,6 @@ public class Tema {
 	@NotNull
 	private int serie;
 	
-	
 	//Getters ands Setters
 	public long getId() {
 		return id;
@@ -48,6 +47,5 @@ public class Tema {
 	public void setSerie(int serie) {
 		this.serie = serie;
 	}
-	
 	
 }
