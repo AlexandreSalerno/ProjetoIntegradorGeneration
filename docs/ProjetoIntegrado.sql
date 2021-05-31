@@ -21,7 +21,6 @@ CREATE TABLE `tb_usuario` (
 CREATE TABLE `tb_tema` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` varchar(50) NOT NULL,
-	`descricao` varchar(255),
 	`serie` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
