@@ -7,6 +7,9 @@ public class UsuarioLogin {
 	private String email;
 	
 	private String senha;
+	
+	private String token;
+
 
 	public String getNome() {
 		return nome;
@@ -31,5 +34,15 @@ public class UsuarioLogin {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+	
+	
 
 }
