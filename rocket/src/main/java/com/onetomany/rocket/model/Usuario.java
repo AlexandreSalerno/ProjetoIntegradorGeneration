@@ -23,15 +23,12 @@ public class Usuario {
 	private long id;
 	
 	@NotNull
-	@Size(min = 10,max = 60)
 	private String nome;
 	
 	@NotNull
-	@Size(min = 5, max = 20)
 	private String email;
 	
 	@NotNull
-	@Size(min = 4, max = 8)
 	private String senha;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
