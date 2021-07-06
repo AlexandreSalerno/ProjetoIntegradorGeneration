@@ -14,6 +14,8 @@ public class UsuarioLogin {
 	
 	private String foto;
 	
+	private int serie;
+	
 	private boolean instrutor;
 	
 	
@@ -64,6 +66,14 @@ public class UsuarioLogin {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	
+	public int getSerie() {
+		return serie;
+	}
+	
+	public void setSerie(int serie) {
+		this.serie = serie;
+	}
 
 	public boolean isInstrutor() {
 		return instrutor;
@@ -72,5 +82,5 @@ public class UsuarioLogin {
 	public void setInstrutor(boolean instrutor) {
 		this.instrutor = instrutor;
 	}
-
+	
 }
