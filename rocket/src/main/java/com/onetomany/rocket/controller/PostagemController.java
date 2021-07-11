@@ -41,9 +41,19 @@ public class PostagemController {
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 	
+	@GetMapping("/titulo/{titulo}/{serie}")
+	public ResponseEntity <List<Postagem>> getAllBySerieAndConteudo (@PathVariable String titulo, @PathVariable int serie){
+		return ResponseEntity.ok(repository.findAllByTemaSerieAndTituloContainingIgnoreCase(serie, titulo));
+	}
+	
 	@GetMapping("/tema/{id}")
 	public ResponseEntity <List<Postagem>> getAllByTitulo (@PathVariable long id) {
 		return ResponseEntity.ok(repository.findAllByTemaId(id));
+	}
+	
+	@GetMapping("/serie/{serie}")
+	public ResponseEntity <List<Postagem>> getAllByTitulo (@PathVariable int serie) {
+		return ResponseEntity.ok(repository.findAllByTemaSerie(serie));
 	}
 	
 	@GetMapping("/conteudo/{conteudo}")
