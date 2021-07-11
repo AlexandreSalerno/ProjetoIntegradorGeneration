@@ -42,8 +42,13 @@ public class PostagemController {
 	}
 	
 	@GetMapping("/titulo/{titulo}/{serie}")
-	public ResponseEntity <List<Postagem>> getAllBySerieAndConteudo (@PathVariable String titulo, @PathVariable int serie){
+	public ResponseEntity <List<Postagem>> getAllByTituloAndSerie(@PathVariable String titulo, @PathVariable int serie){
 		return ResponseEntity.ok(repository.findAllByTemaSerieAndTituloContainingIgnoreCase(serie, titulo));
+	}
+	
+	@GetMapping("/usuario/{id}")
+	public ResponseEntity <List<Postagem>> getAllByTituloAndSerie(@PathVariable long id){
+		return ResponseEntity.ok(repository.findAllByUsuarioId(id));
 	}
 	
 	@GetMapping("/tema/{id}")

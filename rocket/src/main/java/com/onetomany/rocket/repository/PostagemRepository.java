@@ -23,5 +23,8 @@ public interface PostagemRepository extends JpaRepository <Postagem, Long>{
 	public List<Postagem> findAllByTemaId(long id);
 	
 	public List<Postagem> findAllByTemaSerie(int serie);
+	
+	public List<Postagem> findAllByUsuarioId(long id);
+	
 
 }
