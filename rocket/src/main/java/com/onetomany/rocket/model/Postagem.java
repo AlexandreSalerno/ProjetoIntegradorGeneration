@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -29,11 +28,9 @@ public class Postagem {
 	private Date date = new java.sql.Date(System.currentTimeMillis());
 	
 	@NotNull
-	@Size(min = 5, max = 50)
 	private String titulo;
 	
 	@NotNull
-	@Size( max = 1000)
 	private String conteudo;
 	
 	@URL
