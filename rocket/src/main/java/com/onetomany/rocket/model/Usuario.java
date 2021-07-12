@@ -36,9 +36,14 @@ public class Usuario {
 	
 	private boolean instrutor;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagens;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = {"usuario","comentario"})
+	private List<Comentario> comentario;
+	
 
 	public long getId() {
 		return id;
@@ -103,5 +108,15 @@ public class Usuario {
 	public void setInstrutor(boolean instrutor) {
 		this.instrutor = instrutor;
 	}
+
+	public List<Comentario> getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(List<Comentario> comentario) {
+		this.comentario = comentario;
+	}
+	
+	
 	
 }

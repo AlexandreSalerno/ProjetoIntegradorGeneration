@@ -1,12 +1,16 @@
 package com.onetomany.rocket.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,6 +35,7 @@ public class Postagem {
 	private String titulo;
 	
 	@NotNull
+	@Column(columnDefinition = "TEXT")
 	private String conteudo;
 	
 	@URL
@@ -43,6 +48,11 @@ public class Postagem {
 	@ManyToOne
 	@JsonIgnoreProperties("postagens")
 	private Usuario usuario;
+	
+	@OneToMany(mappedBy = "postagens", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("postagens")
+	private List<Comentario> comentario;
+	
 
 	public long getId() {
 		return id;
@@ -99,5 +109,15 @@ public class Postagem {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public List<Comentario> getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(List<Comentario> comentario) {
+		this.comentario = comentario;
+	}
+	
+	
 	
 }
