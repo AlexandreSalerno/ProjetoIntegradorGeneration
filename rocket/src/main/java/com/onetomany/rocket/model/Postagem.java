@@ -16,43 +16,41 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.URL;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_postagem")
 public class Postagem {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date = new java.sql.Date(System.currentTimeMillis());
-	
+
 	@NotNull
 	private String titulo;
-	
+
 	@NotNull
 	@Column(columnDefinition = "TEXT")
 	private String conteudo;
-	
-	@URL
-	private String link;
-	
+
+	private String video;
+
+	private String imagem;
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagens")
 	private Tema tema;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagens")
 	private Usuario usuario;
-	
+
 	@OneToMany(mappedBy = "postagens", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("postagens")
 	private List<Comentario> comentario;
-	
 
 	public long getId() {
 		return id;
@@ -86,14 +84,6 @@ public class Postagem {
 		this.conteudo = conteudo;
 	}
 
-	public String getLink() {
-		return link;
-	}
-
-	public void setLink(String link) {
-		this.link = link;
-	}
-
 	public Tema getTema() {
 		return tema;
 	}
@@ -117,7 +107,20 @@ public class Postagem {
 	public void setComentario(List<Comentario> comentario) {
 		this.comentario = comentario;
 	}
-	
-	
-	
+
+	public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 }
