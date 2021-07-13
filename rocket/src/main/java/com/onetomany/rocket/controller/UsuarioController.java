@@ -37,7 +37,11 @@ public class UsuarioController {
 
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> post(@RequestBody Usuario usuario) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.cadastrarUsuario(usuario));
+		if(repository.findByEmail(usuario.getEmail()).isPresent()){
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}else {
+			return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.cadastrarUsuario(usuario));
+		}
 	}
 
 	@GetMapping("/{id}")
