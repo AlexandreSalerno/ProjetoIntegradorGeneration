@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.onetomany.rocket.repository.PostagemRepository;
 
 @RestController
 @RequestMapping("/postagens")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PostagemController {
 	
 	@Autowired
@@ -37,6 +39,26 @@ public class PostagemController {
 	@GetMapping("/titulo/{titulo}")
 	public ResponseEntity <List<Postagem>> getAllByTitulo (@PathVariable String titulo) {
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
+	}
+	
+	@GetMapping("/titulo/{titulo}/{serie}")
+	public ResponseEntity <List<Postagem>> getAllByTituloAndSerie(@PathVariable String titulo, @PathVariable int serie){
+		return ResponseEntity.ok(repository.findAllByTemaSerieAndTituloContainingIgnoreCase(serie, titulo));
+	}
+	
+	@GetMapping("/usuario/{id}")
+	public ResponseEntity <List<Postagem>> getAllByTituloAndSerie(@PathVariable long id){
+		return ResponseEntity.ok(repository.findAllByUsuarioId(id));
+	}
+	
+	@GetMapping("/tema/{id}")
+	public ResponseEntity <List<Postagem>> getAllByTitulo (@PathVariable long id) {
+		return ResponseEntity.ok(repository.findAllByTemaId(id));
+	}
+	
+	@GetMapping("/serie/{serie}")
+	public ResponseEntity <List<Postagem>> getAllByTitulo (@PathVariable int serie) {
+		return ResponseEntity.ok(repository.findAllByTemaSerie(serie));
 	}
 	
 	@GetMapping("/conteudo/{conteudo}")
