@@ -112,7 +112,8 @@ public class Usuario {
 	public List<Comentario> getComentario() {
 		return comentario;
 	}
-
+	
+	@JsonIgnoreProperties
 	public void setComentario(List<Comentario> comentario) {
 		this.comentario = comentario;
 	}
